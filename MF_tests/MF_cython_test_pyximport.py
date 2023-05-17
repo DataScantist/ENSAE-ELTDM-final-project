@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Created on Wed Apr 26 11:05:18 2023
 
@@ -12,7 +10,6 @@ import cython
 import pyximport
 pyximport.install()
 import sgd
-
 
 
 #création de la classe de factorisation de matrice

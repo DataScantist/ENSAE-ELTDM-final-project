@@ -13,10 +13,12 @@ import numpy
 from Cython.Distutils import build_ext
 
 extensions = [
-    Extension("sgd", ["sgd.pyx"], include_dirs=[numpy.get_include()])
+    Extension("sgd", ["MF_tests/sgd.pyx"], include_dirs=[numpy.get_include(),
+                                                         './MF_tests'])
 ]
 
 setup(
     ext_modules=cythonize(extensions),
-    cmdclass={'build_ext': build_ext}
+    cmdclass={'build_ext': build_ext},
+    script_args=["build_ext", "--build-lib", "./MF_tests"]
 )
