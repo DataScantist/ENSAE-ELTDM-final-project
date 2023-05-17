@@ -6,10 +6,10 @@ Created on Thu Apr 27 11:29:30 2023
 
 import numpy as np
 
+
 # création de la classe de factorisation de matrice
 
-
-class MF():
+class MF_numpy():
 
     def __init__(self, R, K, alpha, beta, iterations):
         """

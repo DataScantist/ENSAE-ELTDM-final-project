@@ -13,7 +13,7 @@ import numpy
 from Cython.Distutils import build_ext
 
 extensions = [
-    Extension("sgd", ["MF_tests/sgd.pyx"], include_dirs=[numpy.get_include(),
+    Extension("sgd", ["MF_tests/sgd_2.pyx"], include_dirs=[numpy.get_include(),
                                                          './MF_tests'])
 ]
 

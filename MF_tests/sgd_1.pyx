@@ -8,7 +8,6 @@ Created on Sat Apr 29 17:02:23 2023
 import cython
 import numpy as np
 cimport numpy as np
-print(np.__version__)
 
 def sgd(np.ndarray[np.float64_t, ndim=2] P,
         np.ndarray[np.float64_t, ndim=2] Q,
