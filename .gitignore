@@ -1,9 +1,11 @@
-MF_tests/build/*
-MF_tests/*.c
-MF_tests/tests.py
-MF_tests/*.so
-MF_tests/*.html
+MF_scripts/build/*
+MF_scripts/*.c
+MF_scripts/tests.py
+MF_scripts/*.so
+MF_scripts/*.html
 env/*
 *.so
 build/*
 *.ipynb_checkpoints
+*.lprof
+*png

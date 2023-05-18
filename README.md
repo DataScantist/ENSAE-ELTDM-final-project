@@ -12,3 +12,7 @@ pip install -r requirements.txt
 ```
 python3 setup.py build_ext --inplace
 ```
+
+### Line profiling of training with SGD
+kernprof -l -v MF_scripts/MF_profiling.py
+
