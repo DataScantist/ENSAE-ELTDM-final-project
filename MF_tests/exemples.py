@@ -1,6 +1,7 @@
 import time
 import numpy as np
-from MF_Numpy import MF
+from MF_Numpy import MF_Numpy
+from MF_cython import MF_Cython
 
 
 def gen_matrix(shape, correlation, sparsity):
@@ -61,11 +62,38 @@ sparsity=0.5
 R = gen_matrix(shape=shape, correlation=correlation, sparsity=sparsity)
 K = int(np.round(np.log(max(R.shape))))
 
-print("\n\nTest :\n\n")
+print("\n\nTest Numpy :\n\n")
 start = time.time()
 
-mf = MF(R, K=K, alpha=0.1, beta=0.05, iterations=50)
+mf = MF_Numpy(R, K=K, alpha=0.1, beta=0.05, iterations=50)
 training_process = mf.train()
+print()
+print(f"K (latent space) of dimension {K}")
+if R.shape[0] < 11 and R.shape[1] < 11:
+    print("Initial matrix of ratings:")
+    print(R)
+    print()
+    print("P x Q, rate prediction, line = users:")
+    print(mf.full_matrix())
+    print()
+    print("User bias:")
+    print(mf.b_u)
+    print()
+    print("Item bias:")
+    print(mf.b_i)
+print()
+print("Global bias:")
+print(mf.b)
+stop = time.time()
+print("\nTemps de fonctionnement :", stop - start)
+
+
+
+print("\n\nTest Cython :\n\n")
+start = time.time()
+
+mf_cython = MF_Cython(R, K=K, alpha=0.1, beta=0.05, iterations=50)
+training_process = mf_cython.train()
 print()
 print(f"K (latent space) of dimension {K}")
 if R.shape[0] < 11 and R.shape[1] < 11:

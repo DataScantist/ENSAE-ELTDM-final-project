@@ -9,7 +9,7 @@ import numpy as np
 
 # création de la classe de factorisation de matrice
 
-class MF_numpy():
+class MF_Numpy():
 
     def __init__(self, R, K, alpha, beta, iterations):
         """

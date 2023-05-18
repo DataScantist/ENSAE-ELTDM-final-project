@@ -2,6 +2,7 @@ MF_tests/build/*
 MF_tests/*.c
 MF_tests/tests.py
 MF_tests/*.so
+MF_tests/*.html
 env/*
 *.so
 build/*

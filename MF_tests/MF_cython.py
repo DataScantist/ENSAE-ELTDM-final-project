@@ -4,9 +4,10 @@ import time
 import cython
 import sgd
 
+print('creating MF class with cython SGD')
 
 #création de la classe de factorisation de matrice
-class MF_cython():
+class MF_Cython():
 
     def __init__(self, R, K, alpha, beta, iterations):
         """
@@ -66,13 +67,13 @@ class MF_cython():
         error = 0
         for x, y in zip(xs, ys):
             error += pow(self.R[x, y] - predicted[x, y], 2)
-        return np.sqrt(error)
+        return np.sqrt(error/len(self.R.nonzero()[0]))
 
     def sgd(self):
         """
         Perform stochastic graident descent
         """
-        sgd.sgd(self.K, self.P, self.Q, self.b_u, self.b_i, self.R, self.samples, self.alpha, self.beta)
+        sgd.sgd(self.P, self.Q, self.b_u, self.b_i, self.samples, self.alpha, self.beta, self.b)
 
     def get_rating(self, i, j):
         """
