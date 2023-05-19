@@ -17,3 +17,9 @@ python3 setup.py build_ext --inplace
 ```
 kernprof -l -v MF_scripts/MF_profiling.py
 ```
+
+### Generate benchmark charts for execution speed
+```
+cd MF_scripts
+python benchmark.py
+```
