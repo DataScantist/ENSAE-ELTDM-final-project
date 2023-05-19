@@ -2,8 +2,7 @@
 import numpy as np
 import time
 import cython
-from sgd import sgd_float32, sgd_float64
-# import sgd
+from sgd import sgd_float64, sgd_variant
 
 
 class MF_Cython():
@@ -90,7 +89,7 @@ class MF_Cython():
     
 
 
-class MF_Cython_float32():
+class MF_Cython_variant():
 
     def __init__(self, R, K, alpha, beta, iterations):
         """
@@ -114,13 +113,13 @@ class MF_Cython_float32():
     def train(self, print_errors=True):
         # Initialize user and item latent feature matrice
         self.P = np.random.normal(scale=1./self.K,
-                                  size=(self.num_users, self.K)).astype(np.float32)
+                                  size=(self.num_users, self.K))
         self.Q = np.random.normal(scale=1./self.K,
-                                  size=(self.num_items, self.K)).astype(np.float32)
+                                  size=(self.num_items, self.K))
 
         # Initialize the biases
-        self.b_u = np.zeros(self.num_users, dtype=np.float32)
-        self.b_i = np.zeros(self.num_items, dtype=np.float32)
+        self.b_u = np.zeros(self.num_users)
+        self.b_i = np.zeros(self.num_items)
         self.b = np.mean(self.R[np.where(self.R != 0)])
 
         # Create a list of training samples
@@ -159,7 +158,7 @@ class MF_Cython_float32():
         """
         Perform stochastic graident descent
         """
-        sgd_float32(self.P, self.Q, self.b_u, self.b_i, self.samples, self.alpha, self.beta, self.b)
+        sgd_variant(self.P, self.Q, self.b_u, self.b_i, self.samples, self.alpha, self.beta, self.b)
 
     def get_rating(self, i, j):
         """

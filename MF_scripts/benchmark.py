@@ -52,9 +52,8 @@ plt.subplots_adjust(top=0.98)
 plt.savefig('low_size_benchmark.png')
 plt.close()
 
-# with larger value, logscale
 
-# size_range_high = np.logspace(1, 3, base=10, dtype=int)
+# with larger value, logscale
 size_range_high = np.logspace(np.log(10), np.log(1001), num=5, base=np.e, dtype=int)
 
 execution_times_high = benchmark_train(classes, size_range_high)

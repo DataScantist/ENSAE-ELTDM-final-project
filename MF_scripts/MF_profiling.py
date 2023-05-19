@@ -1,6 +1,6 @@
 import numpy as np
-from MF_Numpy import MF_Numpy, MF_python, MF_python_float32
-from MF_Cython import MF_Cython, MF_Cython_float32
+from MF_Numpy import MF_Numpy, MF_python
+from MF_Cython import MF_Cython, MF_Cython_variant
 
 # It is necessary to add the decorator @profile on top of the function we want to
 # profile, within the MF_cython and MF_numpy.py scripts.
@@ -58,7 +58,10 @@ if __name__ == "__main__":
     mf_python = MF_python(R, K=K, alpha=0.01, beta=0.05, iterations=50)
     mf_numpy = MF_Numpy(R, K=K, alpha=0.01, beta=0.05, iterations=50)
     mf_cython = MF_Cython(R, K=K, alpha=0.01, beta=0.05, iterations=50)
+    mf_cython_variant = MF_Cython_variant(R, K=K, alpha=0.01, beta=0.05, iterations=50)
 
     mf_python.train(print_errors=False)
     mf_numpy.train(print_errors=False)
     mf_cython.train(print_errors=False)
+    mf_cython_variant.train(print_errors=False)
+

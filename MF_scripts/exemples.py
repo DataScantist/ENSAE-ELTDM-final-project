@@ -1,7 +1,7 @@
 import time
 import numpy as np
 from MF_Numpy import MF_Numpy, MF_python, MF_python_float32
-from MF_Cython import MF_Cython, MF_Cython_float32
+from MF_Cython import MF_Cython, MF_Cython_variant
 
 
 def gen_matrix(shape, correlation, sparsity):
